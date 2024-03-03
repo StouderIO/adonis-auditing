@@ -1,0 +1,8 @@
+{{{
+  exports({ to: app.configPath('auditing.ts') })
+}}}
+import { defineConfig } from '@stouder-io/adonis-auditing'
+
+export default defineConfig({
+
+})
