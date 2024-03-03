@@ -34,15 +34,14 @@ export async function setupApp() {
     .create(fs.baseUrl)
 
   const app = ignitor.createApp('web')
-  test.cleanup(async () => {
-    console.log('app terminate', '\t\t' + Date.now())
-  })
+  test.cleanup(() => app.terminate())
   await app.init()
   await app.boot()
 
   const db = await app.container.make('lucid.db')
+  const emitter = await app.container.make('emitter')
 
-  return { app, db }
+  return { app, db, emitter }
 }
 
 export async function resetTables(db: Database) {
@@ -52,6 +51,7 @@ export async function resetTables(db: Database) {
   test.cleanup(async () => {
     await db.connection().schema.dropTableIfExists('users')
     await db.connection().schema.dropTableIfExists('books')
+    await db.connection().schema.dropTableIfExists('movies')
     await db.connection().schema.dropTableIfExists('audits')
   })
 
@@ -62,6 +62,12 @@ export async function resetTables(db: Database) {
   })
 
   await db.connection().schema.createTable('books', (table) => {
+    table.increments('id').notNullable()
+    table.string('name').unique().notNullable()
+    table.timestamps()
+  })
+
+  await db.connection().schema.createTable('movies', (table) => {
     table.increments('id').notNullable()
     table.string('name').unique().notNullable()
     table.timestamps()

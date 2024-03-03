@@ -23,14 +23,14 @@ export default class Audit extends BaseModel {
 
   @column({
     consume: (value) => (value ? JSON.parse(value) : null),
-    prepare: (value) => (value ? JSON.stringify(value.toObject()) : null),
+    prepare: (value) => (value ? JSON.stringify(value) : null),
     serialize: (value) => (value ? value.toObject() : null),
   })
   declare oldValues: ModelObject | null
 
   @column({
     consume: (value) => (value ? JSON.parse(value) : null),
-    prepare: (value) => (value ? JSON.stringify(value.toObject()) : null),
+    prepare: (value) => (value ? JSON.stringify(value) : null),
     serialize: (value) => (value ? value.toObject() : null),
   })
   declare newValues: ModelObject | null
