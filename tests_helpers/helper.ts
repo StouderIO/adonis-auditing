@@ -28,6 +28,7 @@ export async function setupApp() {
   fs.mkdir(fs.basePath, { recursive: true })
 
   const filename = stringHelpers.slug(test.options.title)
+  console.log('db location:', join(fs.basePath, `db-${filename}.sqlite3`))
   const ignitor = new IgnitorFactory()
     .withCoreProviders()
     .withCoreConfig()
