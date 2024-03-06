@@ -6,6 +6,7 @@ import { defineConfig as defineLucidConfig } from '@adonisjs/lucid'
 import { defineConfig } from '../src/define_config.js'
 
 import { UserResolver, Resolver } from '../src/types.js'
+import stringHelpers from '@adonisjs/core/helpers/string'
 
 class FakeUserResolver implements UserResolver {
   async resolve() {
@@ -26,6 +27,7 @@ export async function setupApp() {
   const { fs } = test.context
   fs.mkdir(fs.basePath, { recursive: true })
 
+  const filename = stringHelpers.slug(test.options.title)
   const ignitor = new IgnitorFactory()
     .withCoreProviders()
     .withCoreConfig()
@@ -36,7 +38,7 @@ export async function setupApp() {
           connections: {
             sqlite: {
               client: 'sqlite3',
-              connection: { filename: join(fs.basePath, 'db.sqlite3') },
+              connection: { filename: join(fs.basePath, `db-${filename}.sqlite3`) },
               useNullAsDefault: true,
             },
           },
