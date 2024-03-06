@@ -3,6 +3,21 @@ import { join } from 'node:path'
 import { Database } from '@adonisjs/lucid/database'
 import { IgnitorFactory } from '@adonisjs/core/factories'
 import { defineConfig as defineLucidConfig } from '@adonisjs/lucid'
+import { defineConfig } from '../src/define_config.js'
+
+import { UserResolver, Resolver } from '../src/types.js'
+
+class FakeUserResolver implements UserResolver {
+  async resolve() {
+    return { id: '1', type: 'User' }
+  }
+}
+
+class FooResolver implements Resolver {
+  async resolve() {
+    return 'bar'
+  }
+}
 
 export async function setupApp() {
   const test = getActiveTest()
@@ -26,9 +41,18 @@ export async function setupApp() {
             },
           },
         }),
+        auditing: defineConfig({
+          userResolver: async () => ({ default: FakeUserResolver }),
+          resolvers: {
+            foo: async () => ({ default: FooResolver }),
+          },
+        }),
       },
       rcFileContents: {
-        providers: [() => import('@adonisjs/lucid/database_provider')],
+        providers: [
+          () => import('@adonisjs/lucid/database_provider'),
+          () => import('../providers/auditing_provider.js'),
+        ],
       },
     })
     .create(fs.baseUrl)
@@ -40,8 +64,9 @@ export async function setupApp() {
 
   const db = await app.container.make('lucid.db')
   const emitter = await app.container.make('emitter')
+  const auditing = await app.container.make('auditing.manager')
 
-  return { app, db, emitter }
+  return { app, db, emitter, auditing }
 }
 
 export async function resetTables(db: Database) {
@@ -76,8 +101,8 @@ export async function resetTables(db: Database) {
   await db.connection().schema.createTable('audits', (table) => {
     table.increments('id').notNullable()
 
-    table.text('user_type').notNullable()
-    table.integer('user_id').notNullable()
+    table.text('user_type').nullable()
+    table.integer('user_id').nullable()
 
     table.text('event').notNullable()
 

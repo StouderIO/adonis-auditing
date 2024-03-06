@@ -7,10 +7,10 @@ export default class Audit extends BaseModel {
   declare id: number
 
   @column()
-  declare userType: string
+  declare userType: string | null
 
   @column()
-  declare userId: string
+  declare userId: string | null
 
   @column()
   declare event: 'create' | 'update' | 'delete'
@@ -34,6 +34,13 @@ export default class Audit extends BaseModel {
     serialize: (value) => (value ? value.toObject() : null),
   })
   declare newValues: ModelObject | null
+
+  @column({
+    consume: (value) => (value ? JSON.parse(value) : null),
+    prepare: (value) => (value ? JSON.stringify(value) : null),
+    serialize: (value) => (value ? value.toObject() : null),
+  })
+  declare metadata: ModelObject | null
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

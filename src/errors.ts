@@ -13,7 +13,7 @@ export const E_AUDITABLE_WRONG_INSTANCE = createError<[string, string]>(
 )
 
 export const E_AUDITABLE_INCOMPATIBLE_ATTRIBUTES = createError<[string, string, string]>(
-  'Incompatible attributes: Audit.%s and %s.%s',
+  'Incompatible attributes: Index.%s and %s.%s',
   'E_AUDITABLE_INCOMPATIBLE_ATTRIBUTES',
   500
 )

@@ -1,20 +1,28 @@
 {
   "name": "@stouder-io/adonis-auditing",
-  "description": "TODO",
-  "version": "0.0.0",
+  "description": "Audit your Lucid models with ease.",
+  "version": "0.0.1",
   "engines": {
     "node": ">=18.16.0"
   },
   "type": "module",
   "files": [
-    "build/src",
-    "build/providers",
-    "build/stubs",
+    "build/configure.js",
+    "build/configure.d.ts",
+    "build/index.js",
     "build/index.d.ts",
-    "build/index.js"
+    "build/stubs",
+    "build/src",
+    "!build/src/auditable/factory.js",
+    "!build/src/auditable/factory.d.ts",
+    "build/services",
+    "build/providers"
   ],
   "exports": {
     ".": "./build/index.js",
+    "./services/main": "./build/services/auditing.js",
+    "./auditing_provider": "./build/providers/auditing_provider.js",
+    "./auditable": "./build/src/mixin.js",
     "./types": "./build/src/types.js"
   },
   "scripts": {
@@ -34,12 +42,34 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": [
-    "TODO"
+    "accountability",
+    "audit",
+    "auditing",
+    "changes",
+    "lucid",
+    "history",
+    "log",
+    "logging",
+    "observer",
+    "adonis",
+    "adonisjs",
+    "record",
+    "revision",
+    "tracking"
   ],
   "author": "Xavier Stouder <xavier@stouder.io> (https://stouder.io)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StouderIO/adonis-auditing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/StouderIO/adonis-auditing/issues",
+    "email": "project@hostname.com"
+  },
   "devDependencies": {
     "@adonisjs/assembler": "^7.2.3",
+    "@adonisjs/auth": "^9.1.1",
     "@adonisjs/core": "^6.3.1",
     "@adonisjs/eslint-config": "^1.2.2",
     "@adonisjs/lucid": "^20.3.0",
@@ -62,6 +92,7 @@
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
+    "@adonisjs/auth": "^9.1.1",
     "@adonisjs/core": "^6.2.0",
     "@adonisjs/lucid": "^20.3.0",
     "luxon": "^3.4.4"
@@ -70,19 +101,14 @@
     "access": "public",
     "tag": "latest"
   },
-  "np": {
-    "message": "chore(release): %s",
-    "tag": "latest",
-    "branch": "main",
-    "anyBranch": false
-  },
   "c8": {
     "reporter": [
       "text",
       "html"
     ],
     "exclude": [
-      "tests/**"
+      "tests/**",
+      "tests_helpers/**"
     ]
   },
   "eslintConfig": {

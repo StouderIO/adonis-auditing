@@ -7,7 +7,7 @@
 | code directly using TS-Node + SWC. For example
 |
 | node --import="./tsnode.esm.js" bin/test.ts
-| node --import="./tsnode.esm.js" index.ts
+| node --import="./tsnode.esm.js" audit.ts
 |
 |
 | Why not use "--loader=ts-node/esm"?

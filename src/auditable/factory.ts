@@ -1,3 +1,5 @@
+import { Database } from '@adonisjs/lucid/database'
+import { EmitterService } from '@adonisjs/core/types'
 import {
   afterCreate,
   afterDelete,
@@ -7,41 +9,29 @@ import {
   beforeDelete,
   beforeUpdate,
 } from '@adonisjs/lucid/orm'
-import emitter from '@adonisjs/core/services/emitter'
-import { ModelObject } from '@adonisjs/lucid/types/model'
-import Audit from './audit.js'
-import { Database } from '@adonisjs/lucid/database'
-import db from '@adonisjs/lucid/services/db'
-import { EmitterService } from '@adonisjs/core/types'
+import Audit from '../audit.js'
 import {
   E_AUDITABLE_CANNOT_REVERT,
   E_AUDITABLE_INCOMPATIBLE_ATTRIBUTES,
   E_AUDITABLE_LOAD_NULL,
   E_AUDITABLE_WRONG_INSTANCE,
   E_AUDITABLE_WRONG_TYPE,
-} from './errors.js'
-
-type EventType = 'create' | 'update' | 'delete'
-type AuditEventType = `audit:${EventType}`
-type AuditEventsList = {
-  [key in AuditEventType]: number
-}
-
-declare module '@adonisjs/core/types' {
-  interface EventsList extends AuditEventsList {}
-}
-
-export type Constructor = new (...args: any[]) => any
-export type NormalizeConstructor<T extends Constructor> = {
-  new (...args: any[]): InstanceType<T>
-} & Omit<T, 'constructor'>
+} from '../errors.js'
+import { ModelObject } from '@adonisjs/lucid/types/model'
+import { NormalizeConstructor } from '../utils/normalized_constructor.js'
+import { EventType } from './events.js'
+import { AuditingService } from '../types.js'
 
 export interface AuditsCursor extends Promise<Audit[]> {
   first: () => Promise<Audit | null>
   last: () => Promise<Audit | null>
 }
 
-export function withAuditable(_innerDb: Database, innerEmitter: EmitterService) {
+export function withAuditable(
+  _innerDb: Database,
+  innerEmitter: EmitterService,
+  innerAuditing: AuditingService
+) {
   return <T extends NormalizeConstructor<typeof BaseModel>>(superclass: T) => {
     class ModelWithAudit extends superclass {
       audits() {
@@ -110,14 +100,18 @@ export function withAuditable(_innerDb: Database, innerEmitter: EmitterService) 
       }
 
       async $audit(event: EventType, modelInstance: ModelWithAudit) {
+        const auditedUser = await innerAuditing.getUserForContext()
+        const metadata = await innerAuditing.getMetadataForContext()
+
         const audit = new Audit()
-        audit.userType = 'ut' // FIXME find user type
-        audit.userId = 'ui' // FIXME find user id
+        audit.userType = auditedUser?.type ?? null
+        audit.userId = auditedUser?.id ?? null
         audit.event = event
         audit.auditableType = modelInstance.constructor.name
         audit.auditableId = (modelInstance as any).id
         audit.oldValues = event === 'create' ? null : this.$auditValuesToSave
         audit.newValues = event === 'delete' ? null : this.$attributes
+        audit.metadata = metadata
         await audit.save()
         await innerEmitter.emit(`audit:${event}`, audit.id)
       }
@@ -156,5 +150,3 @@ export function withAuditable(_innerDb: Database, innerEmitter: EmitterService) 
     return ModelWithAudit
   }
 }
-
-export const Auditable = withAuditable(db, emitter)

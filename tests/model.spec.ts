@@ -6,11 +6,11 @@ import Audit from '../src/audit.js'
 
 test.group('BaseModel with auditable', () => {
   test('create event', async ({ assert }) => {
-    const { db, emitter } = await setupApp()
+    const { db, emitter, auditing } = await setupApp()
     await resetTables(db)
 
-    const { withAuditable } = await import('../src/mixin.js')
-    const Auditable = withAuditable(db, emitter)
+    const { withAuditable } = await import('../src/auditable/factory.js')
+    const Auditable = withAuditable(db, emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -36,11 +36,11 @@ test.group('BaseModel with auditable', () => {
   })
 
   test('update event', async ({ assert }) => {
-    const { db, emitter } = await setupApp()
+    const { db, emitter, auditing } = await setupApp()
     await resetTables(db)
 
-    const { withAuditable } = await import('../src/mixin.js')
-    const Auditable = withAuditable(db, emitter)
+    const { withAuditable } = await import('../src/auditable/factory.js')
+    const Auditable = withAuditable(db, emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -69,11 +69,11 @@ test.group('BaseModel with auditable', () => {
   })
 
   test('delete event', async ({ assert }) => {
-    const { db, emitter } = await setupApp()
+    const { db, emitter, auditing } = await setupApp()
     await resetTables(db)
 
-    const { withAuditable } = await import('../src/mixin.js')
-    const Auditable = withAuditable(db, emitter)
+    const { withAuditable } = await import('../src/auditable/factory.js')
+    const Auditable = withAuditable(db, emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -103,11 +103,11 @@ test.group('BaseModel with auditable', () => {
   })
 
   test('do not audit failed operations', async ({ assert }) => {
-    const { db, emitter } = await setupApp()
+    const { db, emitter, auditing } = await setupApp()
     await resetTables(db)
 
-    const { withAuditable } = await import('../src/mixin.js')
-    const Auditable = withAuditable(db, emitter)
+    const { withAuditable } = await import('../src/auditable/factory.js')
+    const Auditable = withAuditable(db, emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -125,7 +125,7 @@ test.group('BaseModel with auditable', () => {
   })
 
   test('events are emitted', async ({ assert }) => {
-    const { db, emitter } = await setupApp()
+    const { db, emitter, auditing } = await setupApp()
     await resetTables(db)
 
     const eventStack: string[] = []
@@ -133,8 +133,8 @@ test.group('BaseModel with auditable', () => {
     emitter.on('audit:update', () => eventStack.push('update'))
     emitter.on('audit:delete', () => eventStack.push('delete'))
 
-    const { withAuditable } = await import('../src/mixin.js')
-    const Auditable = withAuditable(db, emitter)
+    const { withAuditable } = await import('../src/auditable/factory.js')
+    const Auditable = withAuditable(db, emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -156,11 +156,11 @@ test.group('BaseModel with auditable', () => {
   })
 
   test('transition to wrong types', async ({ assert }) => {
-    const { db, emitter } = await setupApp()
+    const { db, emitter, auditing } = await setupApp()
     await resetTables(db)
 
-    const { withAuditable } = await import('../src/mixin.js')
-    const Auditable = withAuditable(db, emitter)
+    const { withAuditable } = await import('../src/auditable/factory.js')
+    const Auditable = withAuditable(db, emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -192,11 +192,11 @@ test.group('BaseModel with auditable', () => {
   })
 
   test('transition to wrong instance', async ({ assert }) => {
-    const { db, emitter } = await setupApp()
+    const { db, emitter, auditing } = await setupApp()
     await resetTables(db)
 
-    const { withAuditable } = await import('../src/mixin.js')
-    const Auditable = withAuditable(db, emitter)
+    const { withAuditable } = await import('../src/auditable/factory.js')
+    const Auditable = withAuditable(db, emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -220,11 +220,11 @@ test.group('BaseModel with auditable', () => {
   })
 
   test('transition to null attributes', async ({ assert }) => {
-    const { db, emitter } = await setupApp()
+    const { db, emitter, auditing } = await setupApp()
     await resetTables(db)
 
-    const { withAuditable } = await import('../src/mixin.js')
-    const Auditable = withAuditable(db, emitter)
+    const { withAuditable } = await import('../src/auditable/factory.js')
+    const Auditable = withAuditable(db, emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -242,11 +242,11 @@ test.group('BaseModel with auditable', () => {
   })
 
   test('transition to, audit has more attributes', async ({ assert }) => {
-    const { db, emitter } = await setupApp()
+    const { db, emitter, auditing } = await setupApp()
     await resetTables(db)
 
-    const { withAuditable } = await import('../src/mixin.js')
-    const Auditable = withAuditable(db, emitter)
+    const { withAuditable } = await import('../src/auditable/factory.js')
+    const Auditable = withAuditable(db, emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -267,11 +267,11 @@ test.group('BaseModel with auditable', () => {
   })
 
   test('revert an update', async ({ assert }) => {
-    const { db, emitter } = await setupApp()
+    const { db, emitter, auditing } = await setupApp()
     await resetTables(db)
 
-    const { withAuditable } = await import('../src/mixin.js')
-    const Auditable = withAuditable(db, emitter)
+    const { withAuditable } = await import('../src/auditable/factory.js')
+    const Auditable = withAuditable(db, emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
