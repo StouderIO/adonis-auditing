@@ -1,7 +1,7 @@
 {
   "name": "@stouder-io/adonis-auditing",
   "description": "Audit your Lucid models with ease.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "node": ">=18.16.0"
   },
