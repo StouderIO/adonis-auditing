@@ -37,8 +37,8 @@ export async function setupApp() {
           connection: 'sqlite',
           connections: {
             sqlite: {
-              client: 'sqlite3',
-              connection: { filename: join(fs.basePath, `db-${filename}.sqlite3`) },
+              client: 'better-sqlite3',
+              connection: { filename: join(fs.basePath, `db-${filename}.sqlite3`), debug: true },
               useNullAsDefault: true,
             },
           },
