@@ -8,7 +8,7 @@ import { UserResolver } from '@stouder-io/adonis-auditing'
 export default class implements UserResolver {
   resolve({
     auth,
-  }: HttpContext): Promise<InstanceType<ReturnType<ReturnType<typeof withAuthFinder>>>> {
-    return auth.user ?? null
+  }: HttpContext): Promise<{ id: string; type: string } | null> {
+    return auth.user ? { id: auth.user.id, type: 'User' } : null
   }
 }
