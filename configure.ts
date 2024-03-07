@@ -1,6 +1,7 @@
 import ConfigureCommand from '@adonisjs/core/commands/configure'
 import { stubsRoot } from './stubs/main.js'
 import { readFile, writeFile } from 'node:fs/promises'
+import { getTsconfig, parseTsconfig } from 'get-tsconfig'
 
 export async function configure(command: ConfigureCommand) {
   const codemods = await command.createCodemods()
@@ -33,18 +34,15 @@ export async function configure(command: ConfigureCommand) {
 
   // add tsconfig paths
   const tsConfigJsonPath = command.app.makePath('tsconfig.json')
-  console.log('tsConfigJsonPath', tsConfigJsonPath)
-  const tsConfigJson = await readFile(tsConfigJsonPath, 'utf-8').then(JSON.parse)
-  console.log('tsConfigJson', tsConfigJson)
+
+  const tsConfigJson = parseTsconfig(tsConfigJsonPath)
   tsConfigJson.compilerOptions = {
     ...tsConfigJson.compilerOptions,
     paths: {
-      ...tsConfigJson.compilerOptions.paths,
+      ...tsConfigJson.compilerOptions?.paths,
       '#audit_resolvers/*': ['./app/audit_resolvers/*.js'],
     },
   }
-  console.log('tsConfigJson2', tsConfigJson)
-  console.log('stringify', JSON.stringify(tsConfigJson, null, 2))
   await writeFile(tsConfigJsonPath, JSON.stringify(tsConfigJson, null, 2), {
     encoding: 'utf-8',
   })
