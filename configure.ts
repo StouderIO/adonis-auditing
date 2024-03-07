@@ -17,10 +17,11 @@ export async function configure(command: ConfigureCommand) {
   })
 
   // add default resolvers
-  await codemods.makeUsingStub(stubsRoot, 'resolvers/ip_address_resolver.stub', {})
-  await codemods.makeUsingStub(stubsRoot, 'resolvers/user_agent_resolver.stub', {})
-  await codemods.makeUsingStub(stubsRoot, 'resolvers/url_resolver.stub', {})
-  await codemods.makeUsingStub(stubsRoot, 'resolvers/user_resolver.stub', {})
+  const path = command.app.makePath('app', 'audit_resolvers')
+  await codemods.makeUsingStub(stubsRoot, 'resolvers/ip_address_resolver.stub', { path })
+  await codemods.makeUsingStub(stubsRoot, 'resolvers/user_agent_resolver.stub', { path })
+  await codemods.makeUsingStub(stubsRoot, 'resolvers/url_resolver.stub', { path })
+  await codemods.makeUsingStub(stubsRoot, 'resolvers/user_resolver.stub', { path })
 
   // add imports
   const packageJson = await readFile('package.json', 'utf-8').then(JSON.parse)
