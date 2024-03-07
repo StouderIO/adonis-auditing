@@ -10,10 +10,11 @@ export async function configure(command: ConfigureCommand) {
   // create default config file
   await codemods.makeUsingStub(stubsRoot, 'config.stub', {})
 
-  // add directory to rc file
-  await codemods.updateRcFile((transformer) =>
+  // add provider and directory to rc file
+  await codemods.updateRcFile((transformer) => {
     transformer.addProvider('@stouder-io/adonis-auditing/auditing_provider')
-  )
+    transformer.setDirectory('audit_resolvers', 'app/audit_resolvers')
+  })
 
   // add default resolvers
   await codemods.makeUsingStub(stubsRoot, 'resolvers/ip_address_resolver.stub', {})

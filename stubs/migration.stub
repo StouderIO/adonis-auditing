@@ -1,5 +1,5 @@
 {{{
-  exports({ to: app.migrationsPath('{{{ time }}}_create_audits_table) })
+  exports({ to: app.migrationsPath(time + '_create_audits_table.ts') })
 }}}
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
