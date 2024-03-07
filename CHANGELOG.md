@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.7](https://github.com/StouderIO/adonis-auditing/compare/v1.0.6...v1.0.7) (2024-03-07)
+
+
+### Bug Fixes
+
+* treat tsconfig as jsonc ([e8aceb8](https://github.com/StouderIO/adonis-auditing/commit/e8aceb8fb0667ef47843623608deec7f2cd04245))
+
 ## [1.0.6](https://github.com/StouderIO/adonis-auditing/compare/v1.0.5...v1.0.6) (2024-03-07)
 
 
