@@ -32,7 +32,7 @@ export async function configure(command: ConfigureCommand) {
   })
 
   // add tsconfig paths
-  const tsConfigJsonPath = command.app.makePath('package.json')
+  const tsConfigJsonPath = command.app.makePath('tsconfig.json')
   const tsConfigJson = await readFile(tsConfigJsonPath, 'utf-8').then(JSON.parse)
   tsConfigJson.compilerOptions = {
     ...tsConfigJson.compilerOptions,
