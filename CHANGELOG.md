@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/StouderIO/adonis-auditing/compare/v1.0.0...v1.0.1) (2024-03-07)
+
+
+### Bug Fixes
+
+* correct index content ([712b70a](https://github.com/StouderIO/adonis-auditing/commit/712b70a323b241076dba6d31b500df799ce1ae33))
+
 ## 1.0.0 (2024-03-06)
 
 
