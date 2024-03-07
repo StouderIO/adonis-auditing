@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/StouderIO/adonis-auditing/compare/v1.0.2...v1.0.3) (2024-03-07)
+
+
+### Bug Fixes
+
+* configure step should be fixed ([74b8ca2](https://github.com/StouderIO/adonis-auditing/commit/74b8ca2bcdd36cfaa3b27291878714e7f7407187))
+
 ## [1.0.2](https://github.com/StouderIO/adonis-auditing/compare/v1.0.1...v1.0.2) (2024-03-07)
 
 
