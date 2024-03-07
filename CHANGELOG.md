@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/StouderIO/adonis-auditing/compare/v1.0.3...v1.0.4) (2024-03-07)
+
+
+### Bug Fixes
+
+* configure tsconfig ([928b1d1](https://github.com/StouderIO/adonis-auditing/commit/928b1d1d5632a5cf8626ba7b7d9c7633e0fe3c0b))
+
 ## [1.0.3](https://github.com/StouderIO/adonis-auditing/compare/v1.0.2...v1.0.3) (2024-03-07)
 
 
