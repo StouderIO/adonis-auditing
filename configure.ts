@@ -1,7 +1,7 @@
 import ConfigureCommand from '@adonisjs/core/commands/configure'
 import { stubsRoot } from './stubs/main.js'
 import { readFile, writeFile } from 'node:fs/promises'
-import { getTsconfig, parseTsconfig } from 'get-tsconfig'
+import { parseTsconfig } from 'get-tsconfig'
 
 export async function configure(command: ConfigureCommand) {
   const codemods = await command.createCodemods()
