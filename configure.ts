@@ -24,12 +24,16 @@ export async function configure(command: ConfigureCommand) {
   await codemods.makeUsingStub(stubsRoot, 'resolvers/user_resolver.stub', { path })
 
   // add imports
-  const packageJson = await readFile('package.json', 'utf-8').then(JSON.parse)
+  const packageJsonPath = command.app.makePath('package.json')
+  const packageJson = await readFile(packageJsonPath, 'utf-8').then(JSON.parse)
   packageJson.imports = { ...packageJson.imports, '#audit_resolvers/*': './audit_resolvers/*.js' }
-  await writeFile('package.json', JSON.stringify(packageJson, null, 2), { encoding: 'utf-8' })
+  await writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2), {
+    encoding: 'utf-8',
+  })
 
   // add tsconfig paths
-  const tsConfigJson = await readFile('tsconfig.json', 'utf-8').then(JSON.parse)
+  const tsConfigJsonPath = command.app.makePath('package.json')
+  const tsConfigJson = await readFile(tsConfigJsonPath, 'utf-8').then(JSON.parse)
   tsConfigJson.compilerOptions = {
     ...tsConfigJson.compilerOptions,
     paths: {
@@ -37,6 +41,7 @@ export async function configure(command: ConfigureCommand) {
       '#audit_resolvers/*': ['./app/audit_resolvers/*.js'],
     },
   }
-  tsConfigJson.compilerOptions.paths['#audit_resolvers/*'] = ['./audit_resolvers/*']
-  await writeFile('tsconfig.json', JSON.stringify(tsConfigJson, null, 2), { encoding: 'utf-8' })
+  await writeFile(tsConfigJsonPath, JSON.stringify(tsConfigJson, null, 2), {
+    encoding: 'utf-8',
+  })
 }
