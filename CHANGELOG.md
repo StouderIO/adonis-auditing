@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.9](https://github.com/StouderIO/adonis-auditing/compare/v1.0.8...v1.0.9) (2024-03-07)
+
+
+### Bug Fixes
+
+* user resolver typing ([d5a2d98](https://github.com/StouderIO/adonis-auditing/commit/d5a2d98377455708bea9d62e6b4eeee9ec10d774))
+
 ## [1.0.8](https://github.com/StouderIO/adonis-auditing/compare/v1.0.7...v1.0.8) (2024-03-07)
 
 
