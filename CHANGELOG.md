@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.6](https://github.com/StouderIO/adonis-auditing/compare/v1.0.5...v1.0.6) (2024-03-07)
+
+
+### Bug Fixes
+
+* debug ([90e011f](https://github.com/StouderIO/adonis-auditing/commit/90e011f997d637163fae313f3af76ea45623c512))
+
 ## [1.0.5](https://github.com/StouderIO/adonis-auditing/compare/v1.0.4...v1.0.5) (2024-03-07)
 
 
