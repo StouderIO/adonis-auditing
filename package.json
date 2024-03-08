@@ -7,16 +7,7 @@
   },
   "type": "module",
   "files": [
-    "build/configure.js",
-    "build/configure.d.ts",
-    "build/index.js",
-    "build/index.d.ts",
-    "build/stubs",
-    "build/src",
-    "!build/src/auditable/factory.js",
-    "!build/src/auditable/factory.d.ts",
-    "build/services",
-    "build/providers"
+    "build"
   ],
   "exports": {
     ".": "./build/index.js",
@@ -35,7 +26,7 @@
     "pretest": "npm run lint",
     "test": "c8 npm run quick:test",
     "prebuild": "npm run lint && npm run clean",
-    "build": "tsc",
+    "build": "tsup-node",
     "postbuild": "npm run copy:templates",
     "release": "np",
     "version": "npm run build",
@@ -90,6 +81,7 @@
     "np": "^10.0.0",
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
+    "tsup": "^8.0.2",
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
@@ -118,5 +110,22 @@
   "prettier": "@adonisjs/prettier-config",
   "dependencies": {
     "get-tsconfig": "^4.7.3"
+  },
+  "tsup": {
+    "entry": [
+      "./index.ts",
+      "./src/types.ts",
+      "./src/manager.ts",
+      "./src/errors.ts",
+      "./src/define_config.ts",
+      "./src/audit.ts",
+      "./src/auditable/events.ts",
+      "./src/auditable/mixin.ts"
+    ],
+    "outDir": "./build",
+    "clean": true,
+    "format": "esm",
+    "dts": true,
+    "target": "esnext"
   }
 }
