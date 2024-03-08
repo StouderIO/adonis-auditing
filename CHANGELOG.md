@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.12](https://github.com/StouderIO/adonis-auditing/compare/v1.0.11...v1.0.12) (2024-03-08)
+
+
+### Bug Fixes
+
+* properly expose stubs ([673f3dc](https://github.com/StouderIO/adonis-auditing/commit/673f3dcbd2624f8de35a0d607fac6059946db6fb))
+
 ## [1.0.11](https://github.com/StouderIO/adonis-auditing/compare/v1.0.10...v1.0.11) (2024-03-08)
 
 
