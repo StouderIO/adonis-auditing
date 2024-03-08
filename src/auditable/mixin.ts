@@ -1,9 +1,8 @@
-import app from '@adonisjs/core/services/app'
 import emitter from '@adonisjs/core/services/emitter'
-import db from '@adonisjs/lucid/services/db'
 import { withAuditable } from './factory.js'
+import auditing from '../../services/auditing.js'
 
-const Auditable = withAuditable(db, emitter, app)
+const Auditable = withAuditable(emitter, auditing)
 export default Auditable
 
 export type IAuditable = InstanceType<ReturnType<typeof Auditable>>

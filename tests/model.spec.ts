@@ -10,7 +10,7 @@ test.group('BaseModel with auditable', () => {
     await resetTables(db)
 
     const { withAuditable } = await import('../src/auditable/factory.js')
-    const Auditable = withAuditable(db, emitter, auditing)
+    const Auditable = withAuditable(emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -40,7 +40,7 @@ test.group('BaseModel with auditable', () => {
     await resetTables(db)
 
     const { withAuditable } = await import('../src/auditable/factory.js')
-    const Auditable = withAuditable(db, emitter, auditing)
+    const Auditable = withAuditable(emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -73,7 +73,7 @@ test.group('BaseModel with auditable', () => {
     await resetTables(db)
 
     const { withAuditable } = await import('../src/auditable/factory.js')
-    const Auditable = withAuditable(db, emitter, auditing)
+    const Auditable = withAuditable(emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -107,7 +107,7 @@ test.group('BaseModel with auditable', () => {
     await resetTables(db)
 
     const { withAuditable } = await import('../src/auditable/factory.js')
-    const Auditable = withAuditable(db, emitter, auditing)
+    const Auditable = withAuditable(emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -134,7 +134,7 @@ test.group('BaseModel with auditable', () => {
     emitter.on('audit:delete', () => eventStack.push('delete'))
 
     const { withAuditable } = await import('../src/auditable/factory.js')
-    const Auditable = withAuditable(db, emitter, auditing)
+    const Auditable = withAuditable(emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -160,7 +160,7 @@ test.group('BaseModel with auditable', () => {
     await resetTables(db)
 
     const { withAuditable } = await import('../src/auditable/factory.js')
-    const Auditable = withAuditable(db, emitter, auditing)
+    const Auditable = withAuditable(emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -196,7 +196,7 @@ test.group('BaseModel with auditable', () => {
     await resetTables(db)
 
     const { withAuditable } = await import('../src/auditable/factory.js')
-    const Auditable = withAuditable(db, emitter, auditing)
+    const Auditable = withAuditable(emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -224,7 +224,7 @@ test.group('BaseModel with auditable', () => {
     await resetTables(db)
 
     const { withAuditable } = await import('../src/auditable/factory.js')
-    const Auditable = withAuditable(db, emitter, auditing)
+    const Auditable = withAuditable(emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -246,7 +246,7 @@ test.group('BaseModel with auditable', () => {
     await resetTables(db)
 
     const { withAuditable } = await import('../src/auditable/factory.js')
-    const Auditable = withAuditable(db, emitter, auditing)
+    const Auditable = withAuditable(emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
@@ -271,7 +271,7 @@ test.group('BaseModel with auditable', () => {
     await resetTables(db)
 
     const { withAuditable } = await import('../src/auditable/factory.js')
-    const Auditable = withAuditable(db, emitter, auditing)
+    const Auditable = withAuditable(emitter, auditing)
     class Book extends compose(BaseModel, Auditable) {
       @column()
       declare id: number
