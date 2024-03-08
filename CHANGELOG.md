@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.13](https://github.com/StouderIO/adonis-auditing/compare/v1.0.12...v1.0.13) (2024-03-08)
+
+
+### Bug Fixes
+
+* do not use app service for trait ([877c383](https://github.com/StouderIO/adonis-auditing/commit/877c38327581660fba48ae3819804992ad51e296))
+
 ## [1.0.12](https://github.com/StouderIO/adonis-auditing/compare/v1.0.11...v1.0.12) (2024-03-08)
 
 
