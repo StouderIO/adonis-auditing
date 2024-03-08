@@ -1,5 +1,5 @@
 import { Database } from '@adonisjs/lucid/database'
-import { EmitterService } from '@adonisjs/core/types'
+import { ApplicationService, EmitterService } from '@adonisjs/core/types'
 import {
   afterCreate,
   afterDelete,
@@ -20,7 +20,7 @@ import {
 import { ModelObject } from '@adonisjs/lucid/types/model'
 import { NormalizeConstructor } from '../utils/normalized_constructor.js'
 import { EventType } from './events.js'
-import { AuditingService } from '../types.js'
+import type { AuditingService } from '../types.js'
 
 export interface AuditsCursor extends Promise<Audit[]> {
   first: () => Promise<Audit | null>
@@ -30,7 +30,7 @@ export interface AuditsCursor extends Promise<Audit[]> {
 export function withAuditable(
   _innerDb: Database,
   innerEmitter: EmitterService,
-  innerAuditing: AuditingService
+  innerApp: ApplicationService
 ) {
   return <T extends NormalizeConstructor<typeof BaseModel>>(superclass: T) => {
     class ModelWithAudit extends superclass {
@@ -100,6 +100,7 @@ export function withAuditable(
       }
 
       async $audit(event: EventType, modelInstance: ModelWithAudit) {
+        const innerAuditing: AuditingService = await innerApp.container.make('auditing.manager')
         const auditedUser = await innerAuditing.getUserForContext()
         const metadata = await innerAuditing.getMetadataForContext()
 
