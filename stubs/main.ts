@@ -1,4 +1,3 @@
-import { dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { getDirname } from '@poppinss/utils'
 
-export const stubsRoot = dirname(fileURLToPath(import.meta.url))
+export const stubsRoot = getDirname(import.meta.url)
