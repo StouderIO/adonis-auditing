@@ -27,7 +27,10 @@ export async function configure(command: ConfigureCommand) {
   // add imports
   const packageJsonPath = command.app.makePath('package.json')
   const packageJson = await readFile(packageJsonPath, 'utf-8').then(JSON.parse)
-  packageJson.imports = { ...packageJson.imports, '#audit_resolvers/*': './audit_resolvers/*.js' }
+  packageJson.imports = {
+    ...packageJson.imports,
+    '#audit_resolvers/*': './app/audit_resolvers/*.js',
+  }
   await writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2), {
     encoding: 'utf-8',
   })
