@@ -108,6 +108,7 @@ export function withAuditable(innerEmitter: EmitterService, innerAuditing: Audit
         audit.newValues = event === 'delete' ? null : this.$attributes
         audit.metadata = metadata
         await audit.save()
+
         await innerEmitter.emit(`audit:${event}`, audit.id)
       }
 

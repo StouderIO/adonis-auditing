@@ -11,9 +11,9 @@
   ],
   "exports": {
     ".": "./build/index.js",
+    "./setup": "./build/setup.js",
     "./services/main": "./build/services/auditing.js",
     "./auditing_provider": "./build/providers/auditing_provider.js",
-    "./auditable": "./build/src/mixin.js",
     "./types": "./build/src/types.js"
   },
   "scripts": {
@@ -26,7 +26,7 @@
     "pretest": "npm run lint",
     "test": "c8 npm run quick:test",
     "prebuild": "npm run lint && npm run clean",
-    "build": "tsup-node",
+    "build": "tsup",
     "postbuild": "npm run copy:templates",
     "release": "np",
     "version": "npm run build",
@@ -114,15 +114,10 @@
   "tsup": {
     "entry": [
       "./index.ts",
+      "./setup.ts",
+      "./providers/auditing_provider.ts",
       "./src/types.ts",
-      "./src/manager.ts",
-      "./src/errors.ts",
-      "./src/define_config.ts",
-      "./src/audit.ts",
-      "./src/auditable/events.ts",
-      "./src/auditable/mixin.ts",
-      "./services/auditing.ts",
-      "./providers/auditing_provider.ts"
+      "./src/errors.ts"
     ],
     "outDir": "./build",
     "clean": true,
