@@ -5,7 +5,7 @@ import npm2yarn from '@docusaurus/remark-plugin-npm2yarn'
 
 const config: Config = {
   title: 'Adonis Auditing',
-  tagline: 'Audit your Lucid models with ease',
+  tagline: 'Audit your Lucid models with ease.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -76,8 +76,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Installation',
+              to: '/docs/essentials/installation',
             },
           ],
         },
