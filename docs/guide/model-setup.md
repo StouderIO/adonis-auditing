@@ -3,7 +3,7 @@
 Setting up the model for auditing is a simple process.
 You only need to add the `Auditable` mixin using the `compose` helper to extends the model with the auditing features.
 
-To install the package and all its dependencies, please refer to the [Installation](/docs-docusaurus/essentials/installation) section.
+To install the package and all its dependencies, please refer to the [Installation](/guide/installation) section.
 
 ```typescript
 import { DateTime } from 'luxon'
