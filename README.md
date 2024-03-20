@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/StouderIO/adonis-translatable/main/.github/images/header.png" />
+  <img src="https://raw.githubusercontent.com/StouderIO/adonis-auditing/main/.github/images/header.png" />
   <h3>@stouder-io/adonis-auditing</h3>
   <p>Audit your Lucid models with ease.</p>
   <a href="https://www.npmjs.com/package/@stouder-io/adonis-auditing">
@@ -10,8 +10,6 @@
   <img alt="All Contributors" src="https://img.shields.io/github/all-contributors/StouderIO/adonis-auditing?color=ee8449&style=for-the-badge">
 
 </div>
-
-This package provides a simple way to audit your Lucid models. It's built on top of the AdonisJS framework and uses the Lucid ORM.
 
 # Official Documentation
 For more information, please refer to the [official documentation](https://adonis-auditing.stouder.io/).
