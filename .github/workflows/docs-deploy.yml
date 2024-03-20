@@ -23,6 +23,8 @@ jobs:
         with:
           fetch-depth: 0
       - uses: pnpm/action-setup@v3
+        with:
+          version: 6
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
