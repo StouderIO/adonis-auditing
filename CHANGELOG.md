@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/StouderIO/adonis-auditing/compare/v1.0.14...v1.1.0) (2024-03-20)
+
+
+### Features
+
+* working dependency injection ([392b27e](https://github.com/StouderIO/adonis-auditing/commit/392b27ef9e6e350a1f4a47fcd6c11f4ded23ba56))
+
 ## [1.0.14](https://github.com/StouderIO/adonis-auditing/compare/v1.0.13...v1.0.14) (2024-03-08)
 
 
