@@ -1,7 +1,4 @@
 <div align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <img src="https://raw.githubusercontent.com/StouderIO/adonis-auditing/main/.github/images/header.png" />
   <h3>@stouder-io/adonis-auditing</h3>
   <p>Audit your Lucid models with ease.</p>
@@ -11,7 +8,6 @@
   <img src="https://img.shields.io/npm/l/@stouder-io/adonis-auditing?color=blueviolet&style=for-the-badge" />
   <img alt="npm" src="https://img.shields.io/npm/dt/@stouder-io/adonis-auditing?style=for-the-badge">
   <img alt="All Contributors" src="https://img.shields.io/github/all-contributors/StouderIO/adonis-auditing?color=ee8449&style=for-the-badge">
-
 </div>
 
 # Official Documentation
