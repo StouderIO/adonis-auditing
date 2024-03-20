@@ -1,7 +1,3 @@
----
-sidebar_position: 1
----
-
 # Introduction
 
 Adonis Auditing aims to provide strict control over the data that is being accessed, modified, or deleted in your application.
