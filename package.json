@@ -28,9 +28,11 @@
     "prebuild": "npm run lint && npm run clean",
     "build": "tsup",
     "postbuild": "npm run copy:templates",
-    "release": "np",
     "version": "npm run build",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "keywords": [
     "accountability",
@@ -82,7 +84,8 @@
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
     "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitepress": "1.0.0-rc.45"
   },
   "peerDependencies": {
     "@adonisjs/auth": "^9.1.1",
