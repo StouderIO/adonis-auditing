@@ -1,6 +1,6 @@
 <div align="center">
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   <img src="https://raw.githubusercontent.com/StouderIO/adonis-auditing/main/.github/images/header.png" />
   <h3>@stouder-io/adonis-auditing</h3>
@@ -25,6 +25,7 @@ For more information, please refer to the [official documentation](https://adoni
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://stouder.io"><img src="https://avatars.githubusercontent.com/u/2575182?v=4?s=100" width="100px;" alt="Xavier Stouder"/><br /><sub><b>Xavier Stouder</b></sub></a><br /><a href="https://github.com/StouderIO/adonis-auditing/commits?author=Xstoudi" title="Code">💻</a> <a href="https://github.com/StouderIO/adonis-auditing/commits?author=Xstoudi" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Julien-R44"><img src="https://avatars.githubusercontent.com/u/8337858?v=4?s=100" width="100px;" alt="Julien Ripouteau"/><br /><sub><b>Julien Ripouteau</b></sub></a><br /><a href="#question-Julien-R44" title="Answering Questions">💬</a></td>
     </tr>
   </tbody>
 </table>
