@@ -71,8 +71,6 @@ export default defineConfig({
   title: 'Adonis Auditing',
   description: 'Audit your Lucid models with ease.',
 
-  base: '/adonis-auditing/',
-
   head: [
     ['meta', { property: 'og:title', content: 'Adonis Auditing' }],
     ['meta', { property: 'og:site_name', content: 'Adonis Auditing' }],
