@@ -35,6 +35,19 @@ const guidesNav = [
         link: '/guide/getting-audits'
       }
     ]
+  },
+  {
+    text: 'Advanced Usage',
+    items: [
+      {
+        text: 'Audit Resolvers',
+        link: '/guide/audit-resolvers'
+      },
+      {
+        text: 'User Resolver',
+        link: '/guide/user-resolver'
+      }
+    ]
   }
 ]
 
