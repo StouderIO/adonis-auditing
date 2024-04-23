@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/StouderIO/adonis-auditing/compare/v1.1.0...v1.1.1) (2024-04-23)
+
+
+### Bug Fixes
+
+* export the configure hook ([9202ad5](https://github.com/StouderIO/adonis-auditing/commit/9202ad5d72f0c8fa74c76cf06572b21f7f63f657))
+
 ## [1.1.0](https://github.com/StouderIO/adonis-auditing/compare/v1.0.14...v1.1.0) (2024-03-20)
 
 
