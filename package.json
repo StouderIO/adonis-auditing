@@ -11,7 +11,6 @@
   ],
   "exports": {
     ".": "./build/index.js",
-    "./setup": "./build/setup.js",
     "./services/main": "./build/services/auditing.js",
     "./auditing_provider": "./build/providers/auditing_provider.js",
     "./types": "./build/src/types.js"
@@ -117,7 +116,6 @@
   "tsup": {
     "entry": [
       "./index.ts",
-      "./setup.ts",
       "./providers/auditing_provider.ts",
       "./src/types.ts",
       "./src/errors.ts"
@@ -127,5 +125,8 @@
     "format": "esm",
     "dts": true,
     "target": "esnext"
+  },
+  "volta": {
+    "node": "21.7.3"
   }
 }
