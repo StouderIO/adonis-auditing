@@ -2,9 +2,6 @@
   "name": "@stouder-io/adonis-auditing",
   "description": "Audit your Lucid models with ease.",
   "version": "1.1.1",
-  "engines": {
-    "node": ">=18.16.0"
-  },
   "type": "module",
   "files": [
     "build"
@@ -56,8 +53,7 @@
     "url": "https://github.com/StouderIO/adonis-auditing.git"
   },
   "bugs": {
-    "url": "https://github.com/StouderIO/adonis-auditing/issues",
-    "email": "project@hostname.com"
+    "url": "https://github.com/StouderIO/adonis-auditing/issues"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^7.2.3",
@@ -79,7 +75,6 @@
     "del-cli": "^5.1.0",
     "eslint": "^8.57.0",
     "luxon": "^3.4.4",
-    "np": "^10.0.0",
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
     "tsup": "^8.0.2",
@@ -116,6 +111,7 @@
   "tsup": {
     "entry": [
       "./index.ts",
+      "./services/auditing.ts",
       "./providers/auditing_provider.ts",
       "./src/types.ts",
       "./src/errors.ts"
