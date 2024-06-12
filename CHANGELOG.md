@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/StouderIO/adonis-auditing/compare/v1.1.1...v1.1.2) (2024-06-12)
+
+
+### Bug Fixes
+
+* wrong auditing service import ([38dc765](https://github.com/StouderIO/adonis-auditing/commit/38dc765ea3d9dff7647f0edf88697ad04f97dcdf))
+
 ## [1.1.1](https://github.com/StouderIO/adonis-auditing/compare/v1.1.0...v1.1.1) (2024-04-23)
 
 
