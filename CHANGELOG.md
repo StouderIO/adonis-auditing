@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.7](https://github.com/StouderIO/adonis-auditing/compare/v1.1.6...v1.1.7) (2024-06-12)
+
+
+### Bug Fixes
+
+* dynamic import deps ([11a7aa8](https://github.com/StouderIO/adonis-auditing/commit/11a7aa8bdff455083ec7f774a52ac0159f80e723))
+
 ## [1.1.6](https://github.com/StouderIO/adonis-auditing/compare/v1.1.5...v1.1.6) (2024-06-12)
 
 
