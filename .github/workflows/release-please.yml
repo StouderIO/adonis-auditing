@@ -51,12 +51,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
         if: ${{ steps.release.outputs.release_created }}
-
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-        if: ${{ steps.release.outputs.release_created }}
-      - name: PrePublish
-        run: git status
+        run: pnpm install
         if: ${{ steps.release.outputs.release_created }}
       - name: Publish
         run: pnpm publish --access public --no-git-checks
