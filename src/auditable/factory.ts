@@ -26,9 +26,12 @@ export interface AuditsCursor extends Promise<Audit[]> {
   last: () => Promise<Audit | null>
 }
 
-export function withAuditable(innerEmitter: EmitterService, innerAuditing: AuditingService) {
+export function withAuditable() {
   return <T extends NormalizeConstructor<typeof BaseModel>>(superclass: T) => {
     class ModelWithAudit extends superclass {
+      static innerEmitter: EmitterService
+      static innerAuditing: AuditingService
+
       audits() {
         const audits = Audit.query()
           .where('auditableType', this.constructor.name)
@@ -95,8 +98,9 @@ export function withAuditable(innerEmitter: EmitterService, innerAuditing: Audit
       }
 
       async $audit(event: EventType, modelInstance: ModelWithAudit) {
-        const auditedUser = await innerAuditing.getUserForContext()
-        const metadata = await innerAuditing.getMetadataForContext()
+        await ModelWithAudit.#init()
+        const auditedUser = await ModelWithAudit.innerAuditing.getUserForContext()
+        const metadata = await ModelWithAudit.innerAuditing.getMetadataForContext()
 
         const audit = new Audit()
         audit.userType = auditedUser?.type ?? null
@@ -109,7 +113,19 @@ export function withAuditable(innerEmitter: EmitterService, innerAuditing: Audit
         audit.metadata = metadata
         await audit.save()
 
-        await innerEmitter.emit(`audit:${event}`, audit.id)
+        await ModelWithAudit.innerEmitter.emit(`audit:${event}`, audit.id)
+      }
+
+      static async #init() {
+        if (ModelWithAudit.innerEmitter && ModelWithAudit.innerAuditing) {
+          return
+        }
+        ModelWithAudit.innerEmitter = await import('@adonisjs/core/services/emitter').then(
+          (m) => m.default
+        )
+        ModelWithAudit.innerAuditing = await import('../../services/auditing.js').then(
+          (m) => m.default
+        )
       }
 
       @beforeCreate()
