@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/StouderIO/adonis-auditing/compare/v1.1.3...v1.1.4) (2024-06-12)
+
+
+### Bug Fixes
+
+* lockfile and ci ([b3f4706](https://github.com/StouderIO/adonis-auditing/commit/b3f47066912057dc290b4293f91f57e4b4638c9c))
+
 ## [1.1.3](https://github.com/StouderIO/adonis-auditing/compare/v1.1.2...v1.1.3) (2024-06-12)
 
 
