@@ -55,9 +55,11 @@ jobs:
       - name: Install dependencies
         run: pnpm i
         if: ${{ steps.release.outputs.release_created }}
-
+      - name: PrePublish
+        run: git status
+        if: ${{ steps.release.outputs.release_created }}
       - name: Publish
-        run: pnpm publish --access public
+        run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         if: ${{ steps.release.outputs.release_created }}
