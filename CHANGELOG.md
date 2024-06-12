@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.5](https://github.com/StouderIO/adonis-auditing/compare/v1.1.4...v1.1.5) (2024-06-12)
+
+
+### Bug Fixes
+
+* ci problem and remove lockfile ([862e708](https://github.com/StouderIO/adonis-auditing/commit/862e708488cf13b55735084b2d4703fa8e1d1b6d))
+
 ## [1.1.4](https://github.com/StouderIO/adonis-auditing/compare/v1.1.3...v1.1.4) (2024-06-12)
 
 
