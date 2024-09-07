@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.8](https://github.com/StouderIO/adonis-auditing/compare/v1.1.7...v1.1.8) (2024-09-07)
+
+
+### Bug Fixes
+
+* compatibility lucid ([5dfcd9b](https://github.com/StouderIO/adonis-auditing/commit/5dfcd9baedc9aa7efc9d6f05f3d9a4d0c076cc46))
+
 ## [1.1.7](https://github.com/StouderIO/adonis-auditing/compare/v1.1.6...v1.1.7) (2024-06-12)
 
 
